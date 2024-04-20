@@ -1,5 +1,4 @@
 // Copyright 2021 NNTU-CS
-// NOLINT
 #include <climits>
 #include <iostream>
 #include <stack>
@@ -77,14 +76,13 @@ int eval(const std::string& postfix) {
     if (isdigit(cur)) 
       mstack.push(std::string(1, cur));
 
-    else if (!isOperand(cur)) {
+    else if (!isOperand(cur))
       std::string right = mstack.top();
       mstack.pop();
       std::string left = mstack.top();
       mstack.pop();
       int res = Eval(left, cur, right);
       mstack.push(std::to_string(res));
-    }
   }
   return stoi(mstack.top());
 }
