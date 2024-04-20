@@ -70,12 +70,11 @@ int Eval(const std::string& left, char oper, const std::string& right) {
       return 0;
   }
 }
-int eval(const std::string& postfix) {
+int eval(std::string pref) {
   std::stack<std::string> mstack;
-  for (char cur : postfix) {
+  for (char cur : pref) {
     if (isdigit(cur))
       mstack.push(std::string(1, cur));
-
     else if (!isOperand(cur)) {
       std::string right = mstack.top();
       mstack.pop();
