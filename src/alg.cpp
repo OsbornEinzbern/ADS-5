@@ -73,16 +73,18 @@ int Eval(const std::string& left, char oper, const std::string& right) {
 int eval(const std::string& postfix) {
   std::stack<std::string> mstack;
   for (char cur : postfix) {
-    if (isdigit(cur)) 
+    if (isdigit(cur))
       mstack.push(std::string(1, cur));
 
-    else if (!isOperand(cur))
+    else { 
+      if (!isOperand(cur)) 
       std::string right = mstack.top();
       mstack.pop();
       std::string left = mstack.top();
       mstack.pop();
       int res = Eval(left, cur, right);
       mstack.push(std::to_string(res));
+    }
   }
   return stoi(mstack.top());
 }
