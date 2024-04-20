@@ -1,4 +1,5 @@
 // Copyright 2021 NNTU-CS
+// NOLINT
 #include <climits>
 #include <iostream>
 #include <stack>
@@ -73,7 +74,7 @@ int Eval(const std::string& left, char oper, const std::string& right) {
 int eval(const std::string& postfix) {
   std::stack<std::string> mstack;
   for (char cur : postfix) {
-    if (isdigit(cur))
+    if (isdigit(cur)) 
       mstack.push(std::string(1, cur));
 
     else if (!isOperand(cur)) {
