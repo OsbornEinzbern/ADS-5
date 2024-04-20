@@ -90,7 +90,7 @@ int eval(std::string pref) {
   for (char cur : pref) {
     if (isdigit(cur)) {
       mstack.push(std::string(1, cur));
-    } else 
+    } else { 
       if (!isOperand(cur)) {
       std::string right = mstack.top();
       mstack.pop();
@@ -98,6 +98,7 @@ int eval(std::string pref) {
       mstack.pop();
       int res = Eval(left, cur, right);
       mstack.push(std::to_string(res));
+    }
     }
   }
   return stoi(mstack.top());
