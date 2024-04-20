@@ -88,9 +88,10 @@ int eval(std::string pref) {
   pref = a;
   std::stack<std::string> mstack;
   for (char cur : pref) {
-    if (isdigit(cur))
+    if (isdigit(cur)) {
       mstack.push(std::string(1, cur));
-    else if (!isOperand(cur)) {
+    } else 
+      if (!isOperand(cur)) {
       std::string right = mstack.top();
       mstack.pop();
       std::string left = mstack.top();
