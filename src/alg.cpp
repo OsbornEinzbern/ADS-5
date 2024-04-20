@@ -90,7 +90,7 @@ int eval(std::string pref) {
   for (char cur : pref) {
     if (isdigit(cur)) {
       mstack.push(std::string(1, cur));
-    } else { 
+    } else {
       if (!isOperand(cur)) {
       std::string right = mstack.top();
       mstack.pop();
