@@ -52,7 +52,14 @@ std::string infx2pstfx(std::string inf) {
     postfix.push_back(s.top());
     s.pop();
   }
-  return postfix;
+  std::string result(1, postfix[0]);
+  for (int i = 1; i < postfix.length() - 1; i++) {
+    result += " ";
+    result += postfix[i];
+  }
+  result += " ";
+  result += postfix[postfix.length() - 1];
+  return result;
 }
 int Eval(const std::string& left, char oper, const std::string& right) {
   int a = stoi(left);
@@ -71,6 +78,14 @@ int Eval(const std::string& left, char oper, const std::string& right) {
   }
 }
 int eval(std::string pref) {
+  std::string a(1, pref[0]);
+  for (int i = 2; i < pref.length(); i += 2) {
+    a += pref[i];
+  }
+  if (a[a.length() - 1] != pref[pref.length() - 1]) {
+    a += pref[pref.length() - 1];
+  }
+  pref = a;
   std::stack<std::string> mstack;
   for (char cur : pref) {
     if (isdigit(cur))
